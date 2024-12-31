@@ -3,23 +3,136 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profil</title>
+  <title>Profil - Perpustakaan Online</title>
+  <!-- Link ke Bootstrap untuk styling responsif dan modern -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-    .card {
-      margin: 20px;
-      padding: 20px;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    body {
+      background-color: #f8f9fa;
     }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #343a40;
+    }
+
+    .card {
+      margin-top: 20px;
+      padding: 25px;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h3 {
+      color: #007bff;
+    }
+
+    .card p {
+      font-size: 1.1rem;
+      color: #495057;
+    }
+
+    .feature-list {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .feature-item {
+      background-color: #f1f3f5;
+      padding: 20px;
+      border-radius: 8px;
+      flex: 1 1 calc(33% - 20px);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .feature-item h4 {
+      color: #007bff;
+      margin-bottom: 10px;
+    }
+
+    .feature-item p {
+      color: #6c757d;
+    }
+
+    @media (max-width: 768px) {
+      .feature-item {
+        flex: 1 1 100%;
+      }
+    }
+
   </style>
 </head>
 <body>
   <section>
-    <h2>Profil Kami</h2>
+    <h2>Profil Perpustakaan Online</h2>
+    
     <div class="card">
-      <p>Aplikasi ini dirancang untuk mempermudah pengguna dalam mengakses koleksi buku, melakukan peminjaman, dan pengembalian secara online. Dibangun menggunakan teknologi terkini untuk kenyamanan Anda.</p>
+      <h3>Tentang Aplikasi Perpustakaan Online</h3>
+      <p>
+        Perpustakaan Online adalah platform yang dirancang untuk memberikan kemudahan dalam mengakses koleksi buku secara digital. Dengan aplikasi ini, Anda dapat meminjam buku dari koleksi kami kapan saja dan di mana saja, tanpa harus pergi ke perpustakaan fisik.
+      </p>
+      <p>
+        Kami menyediakan berbagai macam buku dari berbagai kategori, seperti teknologi, fiksi, pendidikan, dan banyak lagi. Anda dapat dengan mudah mencari buku berdasarkan kategori atau kata kunci, serta melihat status peminjaman dan riwayat buku yang telah Anda pinjam.
+      </p>
+    </div>
+
+    <!-- Fitur Utama -->
+    <h3 class="text-center mt-5">Fitur Utama</h3>
+    <div class="feature-list">
+      <div class="feature-item">
+        <h4>Cari Buku dengan Mudah</h4>
+        <p>Cari buku berdasarkan judul, kategori, atau pengarang untuk menemukan buku yang Anda inginkan dengan cepat.</p>
+      </div>
+      <div class="feature-item">
+        <h4>Pinjam Buku Secara Online</h4>
+        <p>Setelah menemukan buku yang Anda inginkan, Anda dapat langsung meminjamnya dengan beberapa klik saja.</p>
+      </div>
+      <div class="feature-item">
+        <h4>Riwayat Peminjaman</h4>
+        <p>Lihat riwayat peminjaman Anda kapan saja. Dapatkan informasi tentang status peminjaman dan tanggal pengembalian buku.</p>
+      </div>
+    </div>
+
+    <!-- Teknologi yang Digunakan -->
+    <div class="card mt-5">
+      <h3>Teknologi yang Digunakan</h3>
+      <p>
+        Aplikasi ini dibangun menggunakan teknologi web modern, seperti HTML, CSS, JavaScript, dan juga menggunakan database untuk menyimpan data buku dan transaksi peminjaman.
+      </p>
+      <p>
+        Kami juga memastikan aplikasi ini responsif, sehingga dapat diakses dengan mudah melalui berbagai perangkat, baik itu desktop, tablet, maupun ponsel.
+      </p>
+    </div>
+
+    <!-- Misi dan Visi -->
+    <div class="card mt-5">
+      <h3>Visi dan Misi</h3>
+      <p><strong>Visi:</strong> Menjadi platform perpustakaan digital terkemuka yang mempermudah masyarakat dalam mengakses pengetahuan melalui buku.</p>
+      <p><strong>Misi:</strong> 
+        <ul>
+          <li>Menyediakan akses buku berkualitas tinggi secara digital.</li>
+          <li>Mengoptimalkan pengalaman pengguna dengan sistem peminjaman yang mudah dan efisien.</li>
+          <li>Meningkatkan literasi dan akses pengetahuan bagi masyarakat luas.</li>
+        </ul>
+      </p>
     </div>
   </section>
+
+  <!-- Link ke Bootstrap JS dan Popper.js -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
