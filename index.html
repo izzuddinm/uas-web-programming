@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNPAM DIGITAL LIBRARY</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet"> <!-- Menambahkan font dari Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         /* Global styles */
         * {
@@ -31,7 +31,7 @@
             display: flex;
             justify-content: space-between; /* Membuat ruang di antara elemen */
             align-items: center;
-            background-color: #ddeaff;
+            background-color: #a4dfff;
             padding: 15px 0;
         }
 
@@ -72,7 +72,7 @@
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        nav ul li a:hover {
+        nav ul li a:hover, nav ul li a.active {
             background-color: #57c7f3;
             color: #fff;
             transform: scale(1.1);
@@ -88,8 +88,7 @@
         footer {
             text-align: center;
             padding: 15px;
-            background: #ddeaff;
-            /* color: #f8f9fa; */
+            background: #a4dfff;
         }
 
         /* Responsive layout */
@@ -130,10 +129,10 @@
         
         <!-- Menu Navigasi -->
         <ul>
-            <li><a href="beranda.html" target="content">Beranda</a></li>
-            <li><a href="transaksi.html" target="content">Transaksi</a></li>
-            <li><a href="profil.html" target="content">Profil</a></li>
-            <li><a href="kontak.html" target="content">Kontak</a></li>
+            <li><a href="beranda.html" target="content" id="link-beranda">Beranda</a></li>
+            <li><a href="transaksi.html" target="content" id="link-transaksi">Transaksi</a></li>
+            <li><a href="profil.html" target="content" id="link-profil">Profil</a></li>
+            <li><a href="kontak.html" target="content" id="link-kontak">Kontak</a></li>
         </ul>
     </nav>
     
@@ -142,6 +141,17 @@
     <footer>
         &copy; 2024 Perpustakaan Modern. Semua Hak Dilindungi.
     </footer>
+
+    <script>
+        // JavaScript untuk menambahkan kelas aktif pada menu navbar
+        const links = document.querySelectorAll('nav ul li a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                links.forEach(link => link.classList.remove('active')); // Menghapus kelas aktif dari semua link
+                link.classList.add('active'); // Menambahkan kelas aktif pada link yang dipilih
+            });
+        });
+    </script>
 
 </body>
 </html>

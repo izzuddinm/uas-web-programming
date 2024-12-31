@@ -23,7 +23,7 @@
     h2 {
       text-align: center;
       margin-bottom: 30px;
-      color: #343a40;
+      /* color: #343a40; */
     }
 
     form {
@@ -37,7 +37,7 @@
       color: #495057;
     }
 
-    form input, form button {
+    form select, form input {
       width: 100%;
       padding: 12px;
       margin-bottom: 15px;
@@ -46,19 +46,32 @@
       font-size: 1rem;
     }
 
-    form input:focus, form button:focus {
-      border-color: #007bff;
+    form select:focus, form input:focus {
+      border-color: #ffffff;
       outline: none;
     }
 
     form button {
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
+    background-color: #57c7f3;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: auto;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Menambahkan efek transisi */
     }
 
     form button:hover {
-      background-color: #0056b3;
+        background-color: #3498db; /* Mengubah warna latar belakang saat hover */
+        transform: scale(1.05); /* Sedikit membesarkan tombol saat hover */
+    }
+
+
+    .button-container {
+      display: flex;
+      justify-content: flex-end; /* Menempatkan tombol di sebelah kanan */
     }
 
     table {
@@ -73,7 +86,7 @@
     }
 
     table th {
-      background-color: #007bff;
+      background-color: #57c7f3;
       color: white;
     }
 
@@ -90,6 +103,12 @@
       font-size: 1.1rem;
     }
 
+    table th, table td {
+      padding: 15px;
+      text-align: left;
+      font-weight: normal; /* Membuat teks dalam th dan td tidak bold */
+    }
+
   </style>
 </head>
 <body>
@@ -99,10 +118,34 @@
     <!-- Form Transaksi -->
     <form id="transaksiForm">
       <label for="namaBuku">Nama Buku</label>
-      <input type="text" id="namaBuku" placeholder="Masukkan nama buku">
+      <select id="namaBuku">
+        <option value="">Pilih Nama Buku</option>
+        <option value="Buku Pemrograman">Buku Pemrograman</option>
+        <option value="Buku Jaringan">Buku Jaringan</option>
+        <option value="Buku Desain Grafis">Buku Desain Grafis</option>
+        <option value="Buku Web Development">Buku Web Development</option>
+        <option value="Buku Data Science">Buku Data Science</option>
+        <option value="Buku Machine Learning">Buku Machine Learning</option>
+        <option value="Buku Algoritma">Buku Algoritma</option>
+        <option value="Buku Sistem Operasi">Buku Sistem Operasi</option>
+        <option value="Buku Cloud Computing">Buku Cloud Computing</option>
+        <option value="Buku Internet of Things">Buku Internet of Things</option>
+      </select>
 
       <label for="kategori">Kategori</label>
-      <input type="text" id="kategori" placeholder="Masukkan kategori buku">
+      <select id="kategori">
+        <option value="">Pilih Kategori</option>
+        <option value="Teknologi">Teknologi</option>
+        <option value="Sains">Sains</option>
+        <option value="Matematika">Matematika</option>
+        <option value="Fisika">Fisika</option>
+        <option value="Kimia">Kimia</option>
+        <option value="Biologi">Biologi</option>
+        <option value="Komputer">Komputer</option>
+        <option value="Desain Grafis">Desain Grafis</option>
+        <option value="Kedokteran">Kedokteran</option>
+        <option value="Ekonomi">Ekonomi</option>
+      </select>
 
       <label for="tanggalPinjam">Tanggal Peminjaman</label>
       <input type="date" id="tanggalPinjam">
@@ -110,11 +153,15 @@
       <label for="tanggalKembali">Tanggal Pengembalian</label>
       <input type="date" id="tanggalKembali">
 
-      <button type="button" onclick="tambahTransaksi()">Tambah Transaksi</button>
+      <div class="button-container">
+        <button type="button" onclick="tambahTransaksi()">Tambah Transaksi</button>
+      </div>
     </form>
 
     <!-- Daftar Transaksi -->
     <table>
+    <h3>Tambah Transaksi Peminjaman Buku</h3>
+
       <thead>
         <tr>
           <th>Nama Buku</th>
@@ -122,6 +169,7 @@
           <th>Tanggal Peminjaman</th>
           <th>Tanggal Pengembalian</th>
           <th>Status</th>
+          <th>Aksi</th> <!-- Kolom untuk tombol aksi -->
         </tr>
       </thead>
       <tbody id="daftarTransaksi">
@@ -131,6 +179,7 @@
           <td>2024-01-01</td>
           <td>2024-01-15</td>
           <td>Dipinjam</td>
+          <td><button class="btn btn-danger btn-sm" onclick="hapusTransaksi(this)">Hapus</button></td>
         </tr>
       </tbody>
     </table>
@@ -157,7 +206,7 @@
       // Menambahkan transaksi ke dalam tabel
       const daftar = document.getElementById('daftarTransaksi');
       const row = daftar.insertRow();
-      row.innerHTML = `<td>${namaBuku}</td><td>${kategori}</td><td>${tanggalPinjam}</td><td>${tanggalKembali}</td><td>Dipinjam</td>`;
+      row.innerHTML = `<td>${namaBuku}</td><td>${kategori}</td><td>${tanggalPinjam}</td><td>${tanggalKembali}</td><td>Dipinjam</td><td><button class="btn btn-danger btn-sm" onclick="hapusTransaksi(this)">Hapus</button></td>`;
 
       // Menampilkan alert sukses
       const alertMessage = document.getElementById('alertMessage');
@@ -168,6 +217,12 @@
 
       // Reset form input
       document.getElementById('transaksiForm').reset();
+    }
+
+    function hapusTransaksi(button) {
+      // Menghapus baris transaksi yang dipilih
+      const row = button.parentNode.parentNode;
+      row.remove();
     }
   </script>
 
