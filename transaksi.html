@@ -4,118 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Transaksi - Perpustakaan Online</title>
-  <!-- Link ke Bootstrap untuk styling responsif dan modern -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      background-color: #f4f7fc;
-    }
-
-    section {
-      max-width: 900px;
-      margin: 30px auto;
-      padding: 30px;
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-      text-align: center;
-      margin-bottom: 30px;
-      /* color: #343a40; */
-    }
-
-    form {
-      margin-bottom: 20px;
-    }
-
-    form label {
-      font-size: 1.1rem;
-      font-weight: 500;
-      margin-bottom: 10px;
-      color: #495057;
-    }
-
-    form select, form input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      font-size: 1rem;
-    }
-
-    form select:focus, form input:focus {
-      border-color: #ffffff;
-      outline: none;
-    }
-
-    form button {
-    background-color: #57c7f3;
-    color: white;
-    cursor: pointer;
-    font-size: 0.9rem;
-    padding: 8px 15px;
-    border-radius: 5px;
-    margin-top: 15px;
-    width: auto;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Menambahkan efek transisi */
-    }
-
-    form button:hover {
-        background-color: #3498db; /* Mengubah warna latar belakang saat hover */
-        transform: scale(1.05); /* Sedikit membesarkan tombol saat hover */
-    }
-
-
-    .button-container {
-      display: flex;
-      justify-content: flex-end; /* Menempatkan tombol di sebelah kanan */
-    }
-
-    table {
-      width: 100%;
-      margin-top: 30px;
-      border-collapse: collapse;
-    }
-
-    table th, table td {
-      padding: 15px;
-      text-align: left;
-    }
-
-    table th {
-      background-color: #57c7f3;
-      color: white;
-    }
-
-    table tbody tr:nth-child(even) {
-      background-color: #f9f9f9;
-    }
-
-    table tbody tr:hover {
-      background-color: #f1f1f1;
-    }
-
-    .alert {
-      text-align: center;
-      font-size: 1.1rem;
-    }
-
-    table th, table td {
-      padding: 15px;
-      text-align: left;
-      font-weight: normal; /* Membuat teks dalam th dan td tidak bold */
-    }
-
-  </style>
 </head>
 <body>
   <section>
     <h2>Tambah Transaksi Peminjaman Buku</h2>
     
-    <!-- Form Transaksi -->
     <form id="transaksiForm">
       <label for="namaBuku">Nama Buku</label>
       <select id="namaBuku">
@@ -158,39 +52,37 @@
       </div>
     </form>
 
-    <!-- Daftar Transaksi -->
-    <table>
-    <h3>Tambah Transaksi Peminjaman Buku</h3>
-
-      <thead>
-        <tr>
-          <th>Nama Buku</th>
-          <th>Kategori</th>
-          <th>Tanggal Peminjaman</th>
-          <th>Tanggal Pengembalian</th>
-          <th>Status</th>
-          <th>Aksi</th> <!-- Kolom untuk tombol aksi -->
-        </tr>
-      </thead>
-      <tbody id="daftarTransaksi">
-        <tr>
-          <td>Buku Pemrograman</td>
-          <td>Teknologi</td>
-          <td>2024-01-01</td>
-          <td>2024-01-15</td>
-          <td>Dipinjam</td>
-          <td><button class="btn btn-danger btn-sm" onclick="hapusTransaksi(this)">Hapus</button></td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>Daftar Transaksi Peminjaman Buku</h3>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Nama Buku</th>
+            <th>Kategori</th>
+            <th>Tanggal Peminjaman</th>
+            <th>Tanggal Pengembalian</th>
+            <th>Status</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody id="daftarTransaksi">
+          <tr>
+            <td>Buku Pemrograman</td>
+            <td>Teknologi</td>
+            <td>2024-01-01</td>
+            <td>2024-01-15</td>
+            <td>Dipinjam</td>
+            <td><button class="btn btn-danger btn-sm" onclick="hapusTransaksi(this)">Hapus</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <!-- Alert ketika transaksi berhasil ditambahkan -->
   <div id="alertMessage" class="alert alert-success d-none" role="alert">
     Transaksi berhasil ditambahkan!
   </div>
 
-  <!-- JavaScript untuk mengatur logika form -->
   <script>
     function tambahTransaksi() {
       const namaBuku = document.getElementById('namaBuku').value;
@@ -203,30 +95,130 @@
         return;
       }
 
-      // Menambahkan transaksi ke dalam tabel
       const daftar = document.getElementById('daftarTransaksi');
       const row = daftar.insertRow();
       row.innerHTML = `<td>${namaBuku}</td><td>${kategori}</td><td>${tanggalPinjam}</td><td>${tanggalKembali}</td><td>Dipinjam</td><td><button class="btn btn-danger btn-sm" onclick="hapusTransaksi(this)">Hapus</button></td>`;
 
-      // Menampilkan alert sukses
       const alertMessage = document.getElementById('alertMessage');
       alertMessage.classList.remove('d-none');
       setTimeout(() => {
         alertMessage.classList.add('d-none');
       }, 3000);
 
-      // Reset form input
       document.getElementById('transaksiForm').reset();
     }
 
     function hapusTransaksi(button) {
-      // Menghapus baris transaksi yang dipilih
       const row = button.parentNode.parentNode;
       row.remove();
     }
   </script>
 
-  <!-- Link ke Bootstrap JS dan Popper.js -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+<style>
+  body {
+    background-color: #f4f7fc;
+  }
+
+  section {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  form {
+    margin-bottom: 20px;
+  }
+
+  form label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #495057;
+  }
+
+  form select, form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+  }
+
+  form select:focus, form input:focus {
+    border-color: #ffffff;
+    outline: none;
+  }
+
+  form button {
+    background-color: #57c7f3;
+    color: white;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 8px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    width: auto;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  form button:hover {
+    background-color: #3498db;
+    transform: scale(1.05);
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    margin-top: 30px;
+    border-collapse: collapse;
+  }
+
+  table th, table td {
+    padding: 15px;
+    text-align: left;
+  }
+
+  table th {
+    background-color: #57c7f3;
+    color: white;
+  }
+
+  table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  .alert {
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  table th, table td {
+    padding: 15px;
+    text-align: left;
+    font-weight: normal;
+  }
+</style>
 </html>

@@ -5,153 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UNPAM DIGITAL LIBRARY</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Global styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto untuk body */
-            line-height: 1.6;
-            background-color: #f8f9fa; 
-            overflow-x: hidden; /* Menghilangkan scroll horizontal */
-        }
-
-        header {
-            text-align: center;
-            padding: 20px 0;
-            background-color: #ffffff;
-        }
-
-        /* Nav bar dengan gambar logo */
-        nav {
-            display: flex;
-            justify-content: space-between; /* Membuat ruang di antara elemen */
-            align-items: center;
-            background-color: #a4dfff;
-            padding: 15px 0;
-        }
-
-        nav img {
-            width: 80px; /* Menentukan lebar gambar logo */
-            height: auto;
-            margin-left: 20px; /* Memberi jarak di sebelah kiri logo */
-        }
-
-        nav .header-text {
-            font-family: 'Poppins', sans-serif; /* Menggunakan font Poppins untuk header */
-            color: #050505;
-            font-size: 1.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            flex-grow: 1; /* Membuat header teks untuk mengisi ruang antara logo dan menu */
-            text-align: center;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin-right: 20px; /* Memberi jarak di sebelah kanan */
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #060606;
-            font-size: 1rem;
-            font-family: 'Roboto', sans-serif; /* Menggunakan font Roboto untuk menu */
-            padding: 12px 20px;
-            border-radius: 25px;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            background-color: #57c7f3;
-            color: #fff;
-            transform: scale(1.1);
-        }
-
-        iframe {
-            width: 100%;
-            height: 80vh;
-            border: none;
-            margin-top: 20px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            background: #a4dfff;
-        }
-
-        /* Responsive layout */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            nav .header-text {
-                margin-top: 10px;
-                font-size: 1.5rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav ul li {
-                margin-bottom: 10px;
-            }
-
-            iframe {
-                height: 60vh;
-            }
-        }
-    </style>
 </head>
 <body>
 
     <nav>
-        <!-- Logo image di bagian nav bar -->
         <img src="images/logo-header.png" alt="Logo Perpustakaan Modern">
-        
-        <!-- Teks "UNPAM DIGITAL LIBRARY" di tengah -->
         <div class="header-text">UNPAM DIGITAL LIBRARY</div>
-        
-        <!-- Menu Navigasi -->
         <ul>
             <li><a href="beranda.html" target="content" id="link-beranda">Beranda</a></li>
             <li><a href="transaksi.html" target="content" id="link-transaksi">Transaksi</a></li>
             <li><a href="profil.html" target="content" id="link-profil">Profil</a></li>
             <li><a href="kontak.html" target="content" id="link-kontak">Kontak</a></li>
         </ul>
+        <a href="login.html" class="login-btn">Login</a>
     </nav>
     
     <iframe name="content" src="beranda.html"></iframe>
     
     <footer>
-        &copy; 2024 Perpustakaan Modern. Semua Hak Dilindungi.
+        &copy; 2024 Unpam Digital. Semua Hak Dilindungi.
     </footer>
 
     <script>
-        // JavaScript untuk menambahkan kelas aktif pada menu navbar
         const links = document.querySelectorAll('nav ul li a');
         links.forEach(link => {
             link.addEventListener('click', () => {
-                links.forEach(link => link.classList.remove('active')); // Menghapus kelas aktif dari semua link
-                link.classList.add('active'); // Menambahkan kelas aktif pada link yang dipilih
+                links.forEach(link => link.classList.remove('active'));
+                link.classList.add('active');
             });
         });
     </script>
 
 </body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        line-height: 1.6;
+        background-color: #f8f9fa; 
+        overflow-x: hidden;
+    }
+
+    header {
+        text-align: center;
+        padding: 20px 0;
+        background-color: #ffffff;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #a4dfff;
+        padding: 15px 20px;
+    }
+
+    nav img {
+        width: 80px;
+        height: auto;
+        margin-left: 20px;
+    }
+
+    nav .header-text {
+        font-family: 'Poppins', sans-serif;
+        color: #050505;
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        margin-right: 20px;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #060606;
+        font-size: 1rem;
+        font-family: 'Roboto', sans-serif;
+        padding: 12px 20px;
+        border-radius: 25px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    nav ul li a:hover, nav ul li a.active {
+        background-color: #57c7f3;
+        color: #fff;
+        transform: scale(1.1);
+    }
+
+    .login-btn {
+        background-color: #489ffd;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 25px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        margin-right: 20px;
+    }
+
+    .login-btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }
+
+    iframe {
+        width: 100%;
+        height: 80vh;
+        border: none;
+        margin-top: 20px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 15px;
+        background: #a4dfff;
+    }
+
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        nav .header-text {
+            margin-top: 10px;
+            font-size: 1.5rem;
+        }
+
+        nav ul {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-bottom: 10px;
+        }
+
+        iframe {
+            height: 60vh;
+        }
+    }
+</style>
 </html>
