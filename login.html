@@ -19,11 +19,12 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 20px;
         }
 
         .login-container {
             background-color: white;
-            padding: 40px 60px;
+            padding: 40px;
             border-radius: 10px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
@@ -73,7 +74,9 @@
             font-size: 1.1rem;
             text-decoration: none;
             text-align: center;
+            border: none;
             transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
         }
 
         .login-btn:hover {
@@ -97,8 +100,49 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
             .login-container {
-                padding: 30px 40px;
+                padding: 30px 20px; /* Mengurangi padding untuk layar kecil */
+            }
+
+            h2 {
+                font-size: 1.5rem; /* Ukuran font lebih kecil */
+            }
+
+            label {
+                font-size: 0.9rem; /* Ukuran font label lebih kecil */
+            }
+
+            input[type="text"], input[type="password"] {
+                font-size: 0.95rem;
+                padding: 10px; /* Mengurangi padding input */
+            }
+
+            .login-btn {
+                font-size: 1rem;
+                padding: 10px; /* Mengurangi padding tombol */
+            }
+
+            .forgot-password a {
+                font-size: 0.85rem; /* Ukuran font lebih kecil */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px 15px; /* Lebih kecil untuk layar sangat kecil */
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+
+            .login-btn {
+                font-size: 0.95rem;
+                padding: 8px;
             }
         }
     </style>
